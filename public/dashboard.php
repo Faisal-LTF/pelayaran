@@ -4,8 +4,7 @@
         <div class="row">
             <!-- Website Analytics -->
             <div class="col-lg-6 mb-4">
-                <div class="swiper-container swiper-container-horizontal swiper swiper-card-advance-bg"
-                    id="swiper-with-pagination-cards">
+                <div class="swiper-container swiper-container-horizontal swiper swiper-card-advance-bg" id="swiper-with-pagination-cards">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="row">
@@ -46,8 +45,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-5 col-md-3 col-12 order-1 order-md-2 my-4 my-md-0 text-center">
-                                        <img src="../assets/img/illustrations/card-website-analytics-1.png"
-                                            alt="Website Analytics" width="170" class="card-website-analytics-img" />
+                                        <img src="../assets/img/illustrations/card-website-analytics-1.png" alt="Website Analytics" width="170" class="card-website-analytics-img" />
                                     </div>
                                 </div>
                             </div>
@@ -88,8 +86,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-5 col-md-3 col-12 order-1 order-md-2 my-4 my-md-0 text-center">
-                                    <img src="../assets/img/illustrations/card-website-analytics-2.png"
-                                        alt="Website Analytics" width="170" class="card-website-analytics-img" />
+                                    <img src="../assets/img/illustrations/card-website-analytics-2.png" alt="Website Analytics" width="170" class="card-website-analytics-img" />
                                 </div>
                             </div>
                         </div>
@@ -129,8 +126,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-5 col-md-3 col-12 order-1 order-md-2 my-4 my-md-0 text-center">
-                                    <img src="../assets/img/illustrations/card-website-analytics-3.png"
-                                        alt="Website Analytics" width="170" class="card-website-analytics-img" />
+                                    <img src="../assets/img/illustrations/card-website-analytics-3.png" alt="Website Analytics" width="170" class="card-website-analytics-img" />
                                 </div>
                             </div>
                         </div>
@@ -154,8 +150,7 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="d-flex gap-2 align-items-center mb-2">
-                                    <span class="badge bg-label-info p-1 rounded"><i
-                                            class="ti ti-shopping-cart ti-xs"></i></span>
+                                    <span class="badge bg-label-info p-1 rounded"><i class="ti ti-shopping-cart ti-xs"></i></span>
                                     <p class="mb-0">Order</p>
                                 </div>
                                 <h5 class="mb-0 pt-1 text-nowrap">62.2%</h5>
@@ -171,8 +166,7 @@
                             <div class="col-4 text-end">
                                 <div class="d-flex gap-2 justify-content-end align-items-center mb-2">
                                     <p class="mb-0">Visits</p>
-                                    <span class="badge bg-label-primary p-1 rounded"><i
-                                            class="ti ti-link ti-xs"></i></span>
+                                    <span class="badge bg-label-primary p-1 rounded"><i class="ti ti-link ti-xs"></i></span>
                                 </div>
                                 <h5 class="mb-0 pt-1 text-nowrap ms-lg-n3 ms-xl-0">25.5%</h5>
                                 <small class="text-muted">12,749</small>
@@ -180,10 +174,8 @@
                         </div>
                         <div class="d-flex align-items-center mt-4">
                             <div class="progress w-100" style="height: 8px">
-                                <div class="progress-bar bg-info" style="width: 70%" role="progressbar"
-                                    aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 30%"
-                                    aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-info" style="width: 70%" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
@@ -217,8 +209,7 @@
                             <small class="text-muted">Weekly Earnings Overview</small>
                         </div>
                         <div class="dropdown">
-                            <button class="btn p-0" type="button" id="earningReportsId" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <button class="btn p-0" type="button" id="earningReportsId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="ti ti-dots-vertical ti-sm text-muted"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="earningReportsId">
@@ -252,20 +243,17 @@
                                     </div>
                                     <h4 class="my-2 pt-1">$545.69</h4>
                                     <div class="progress w-75" style="height: 4px">
-                                        <div class="progress-bar" role="progressbar" style="width: 65%"
-                                            aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="d-flex gap-2 align-items-center">
-                                        <div class="badge rounded bg-label-info p-1"><i
-                                                class="ti ti-chart-pie-2 ti-sm"></i></div>
+                                        <div class="badge rounded bg-label-info p-1"><i class="ti ti-chart-pie-2 ti-sm"></i></div>
                                         <h6 class="mb-0">Profit</h6>
                                     </div>
                                     <h4 class="my-2 pt-1">$256.34</h4>
                                     <div class="progress w-75" style="height: 4px">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
-                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
@@ -277,8 +265,7 @@
                                     </div>
                                     <h4 class="my-2 pt-1">$74.19</h4>
                                     <div class="progress w-75" style="height: 4px">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 65%"
-                                            aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -297,8 +284,7 @@
                             <small class="text-muted">Last 7 Days</small>
                         </div>
                         <div class="dropdown">
-                            <button class="btn p-0" type="button" id="supportTrackerMenu" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <button class="btn p-0" type="button" id="supportTrackerMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="ti ti-dots-vertical ti-sm text-muted"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="supportTrackerMenu">
@@ -316,8 +302,7 @@
                                 </div>
                                 <ul class="p-0 m-0">
                                     <li class="d-flex gap-3 align-items-center mb-lg-3 pt-2 pb-1">
-                                        <div class="badge rounded bg-label-primary p-1"><i
-                                                class="ti ti-ticket ti-sm"></i></div>
+                                        <div class="badge rounded bg-label-primary p-1"><i class="ti ti-ticket ti-sm"></i></div>
                                         <div>
                                             <h6 class="mb-0 text-nowrap">New Tickets</h6>
                                             <small class="text-muted">142</small>
@@ -333,8 +318,7 @@
                                         </div>
                                     </li>
                                     <li class="d-flex gap-3 align-items-center pb-1">
-                                        <div class="badge rounded bg-label-warning p-1"><i
-                                                class="ti ti-clock ti-sm"></i></div>
+                                        <div class="badge rounded bg-label-warning p-1"><i class="ti ti-clock ti-sm"></i></div>
                                         <div>
                                             <h6 class="mb-0 text-nowrap">Response Time</h6>
                                             <small class="text-muted">1 Day</small>
@@ -360,8 +344,7 @@
                             <small class="text-muted">Monthly Sales Overview</small>
                         </div>
                         <div class="dropdown">
-                            <button class="btn p-0" type="button" id="salesByCountry" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <button class="btn p-0" type="button" id="salesByCountry" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="ti ti-dots-vertical ti-sm text-muted"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="salesByCountry">
@@ -374,8 +357,7 @@
                     <div class="card-body">
                         <ul class="p-0 m-0">
                             <li class="d-flex align-items-center mb-4">
-                                <img src="../../assets/svg/flags/us.svg" alt="User" class="rounded-circle me-3"
-                                    width="34" />
+                                <img src="../../assets/svg/flags/us.svg" alt="User" class="rounded-circle me-3" width="34" />
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-2">
                                         <div class="d-flex align-items-center">
@@ -392,8 +374,7 @@
                                 </div>
                             </li>
                             <li class="d-flex align-items-center mb-4">
-                                <img src="../../assets/svg/flags/br.svg" alt="User" class="rounded-circle me-3"
-                                    width="34" />
+                                <img src="../../assets/svg/flags/br.svg" alt="User" class="rounded-circle me-3" width="34" />
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-2">
                                         <div class="d-flex align-items-center">
@@ -410,8 +391,7 @@
                                 </div>
                             </li>
                             <li class="d-flex align-items-center mb-4">
-                                <img src="../../assets/svg/flags/in.svg" alt="User" class="rounded-circle me-3"
-                                    width="34" />
+                                <img src="../../assets/svg/flags/in.svg" alt="User" class="rounded-circle me-3" width="34" />
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-2">
                                         <div class="d-flex align-items-center">
@@ -428,8 +408,7 @@
                                 </div>
                             </li>
                             <li class="d-flex align-items-center mb-4">
-                                <img src="../../assets/svg/flags/au.svg" alt="User" class="rounded-circle me-3"
-                                    width="34" />
+                                <img src="../../assets/svg/flags/au.svg" alt="User" class="rounded-circle me-3" width="34" />
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-2">
                                         <div class="d-flex align-items-center">
@@ -446,8 +425,7 @@
                                 </div>
                             </li>
                             <li class="d-flex align-items-center mb-4">
-                                <img src="../../assets/svg/flags/fr.svg" alt="User" class="rounded-circle me-3"
-                                    width="34" />
+                                <img src="../../assets/svg/flags/fr.svg" alt="User" class="rounded-circle me-3" width="34" />
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-2">
                                         <div class="d-flex align-items-center">
@@ -464,8 +442,7 @@
                                 </div>
                             </li>
                             <li class="d-flex align-items-center">
-                                <img src="../../assets/svg/flags/cn.svg" alt="User" class="rounded-circle me-3"
-                                    width="34" />
+                                <img src="../../assets/svg/flags/cn.svg" alt="User" class="rounded-circle me-3" width="34" />
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-2">
                                         <div class="d-flex align-items-center">
@@ -493,8 +470,7 @@
                     <div class="card-header d-flex justify-content-between pb-1">
                         <h5 class="mb-0 card-title">Total Earning</h5>
                         <div class="dropdown">
-                            <button class="btn p-0" type="button" id="totalEarning" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <button class="btn p-0" type="button" id="totalEarning" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="ti ti-dots-vertical ti-sm text-muted"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="totalEarning">
@@ -548,8 +524,7 @@
                             <small class="text-muted">8.52k Social Visiters</small>
                         </div>
                         <div class="dropdown">
-                            <button class="btn p-0" type="button" id="MonthlyCampaign" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <button class="btn p-0" type="button" id="MonthlyCampaign" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="ti ti-dots-vertical ti-sm text-muted"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="MonthlyCampaign">
@@ -638,8 +613,7 @@
                             <small class="text-muted">38.4k Visitors</small>
                         </div>
                         <div class="dropdown">
-                            <button class="btn p-0" type="button" id="sourceVisits" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <button class="btn p-0" type="button" id="sourceVisits" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="ti ti-dots-vertical ti-sm text-muted"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sourceVisits">

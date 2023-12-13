@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['id_user'])) {
+if (!isset($_SESSION['idUser'])) {
     echo "<script> alert('Silahkan login terlebih dahulu'); </script>";
     echo "<meta http-equiv='refresh' content='0; url=../index.php'>";
 } else {
@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_user'])) {
     include '../db/koneksi.php';
 
 
-    $id = $_SESSION['id_user'];
+    $id = $_SESSION['idUser'];
 
 ?>
 <?php
@@ -42,6 +42,19 @@ if (!isset($_SESSION['id_user'])) {
             break;
         case "hapus_user";
             include "../pages/admin/user/delete.php";
+            break;
+            /// JENIS KAPAL
+        case "data_jenisKapal";
+            include "../pages/admin/jenis-kapal/data.php";
+            break;
+        case "tambah_jenisKapal";
+            include "../pages/admin/jenis-kapal/add.php";
+            break;
+        case "edit_jenisKapal";
+            include "../pages/admin/jenis-kapal/edit.php";
+            break;
+        case "hapus_jenisKapal";
+            include "../pages/admin/jenis-kapal/delete.php";
             break;
     }
 ?>
