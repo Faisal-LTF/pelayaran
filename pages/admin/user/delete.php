@@ -4,7 +4,7 @@
 <?php
 $id = $_GET['id'];
 
-$query = $link->query(" DELETE FROM users WHERE id_user = '$id' ");
+$query = $link->query(" DELETE FROM users WHERE idUser = '$id' ");
 if ($query) {
     echo "<script>
             Swal.fire({
