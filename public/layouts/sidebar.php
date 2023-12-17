@@ -1539,10 +1539,22 @@
                                             <div data-i18n="Users">Users</div>
                                         </a>
                                     </li>
+                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_flag' || $_GET['page'] == 'tambah_flag' || $_GET['page'] == 'edit_flag')) echo 'active'; ?>">
+                                        <a href="?page=data_flag" class="menu-link">
+                                            <i class="menu-icon tf-icons ti ti-flag"></i>
+                                            <div data-i18n="Bendera Kapal">Bendara Kapal</div>
+                                        </a>
+                                    </li>
                                     <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_jenisKapal' || $_GET['page'] == 'tambah_jenisKapal' || $_GET['page'] == 'edit_jenisKapal')) echo 'active'; ?>">
                                         <a href="?page=data_jenisKapal" class="menu-link">
                                             <i class="menu-icon tf-icons ti ti-speedboat"></i>
                                             <div data-i18n="Jenis Kapal">Jenis Kapal</div>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_jenisMesin' || $_GET['page'] == 'tambah_jenisMesin' || $_GET['page'] == 'edit_jenisMesin')) echo 'active'; ?>">
+                                        <a href="?page=data_jenisMesin" class="menu-link">
+                                            <i class="menu-icon tf-icons ti ti-settings-2"></i>
+                                            <div data-i18n="Jenis Mesin">Jenis Mesin</div>
                                         </a>
                                     </li>
                                     <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_sertfikat' || $_GET['page'] == 'tambah_sertfikat' || $_GET['page'] == 'edit_sertfikat')) echo 'active'; ?>">
