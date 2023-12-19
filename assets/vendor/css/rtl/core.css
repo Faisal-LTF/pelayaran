@@ -2470,6 +2470,12 @@ textarea.form-control-lg {
   align-items: stretch;
   width: 100%;
 }
+.input-groupp {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
 .input-group > .form-control,
 .input-group > .form-select,
 .input-group > .form-floating {

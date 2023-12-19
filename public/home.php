@@ -56,6 +56,45 @@ if (!isset($_SESSION['idUser'])) {
         case "hapus_jenisKapal";
             include "../pages/admin/jenis-kapal/delete.php";
             break;
+            /// Flag
+        case "data_flag";
+            include "../pages/admin/flag/data.php";
+            break;
+        case "tambah_flag";
+            include "../pages/admin/flag/add.php";
+            break;
+        case "edit_flag";
+            include "../pages/admin/flag/edit.php";
+            break;
+        case "hapus_flag";
+            include "../pages/admin/flag/delete.php";
+            break;
+            /// Jenis Mesin
+        case "data_jenisMesin";
+            include "../pages/admin/jenis-mesin/data.php";
+            break;
+        case "tambah_jenisMesin";
+            include "../pages/admin/jenis-mesin/add.php";
+            break;
+        case "edit_jenisMesin";
+            include "../pages/admin/jenis-mesin/edit.php";
+            break;
+        case "hapus_jenisMesin";
+            include "../pages/admin/jenis-mesin/delete.php";
+            break;
+            /// TUGBOAT
+        case "data_tugboat";
+            include "../pages/admin/tugboat/data.php";
+            break;
+        case "tambah_tugboat";
+            include "../pages/admin/tugboat/add.php";
+            break;
+        case "edit_tugboat";
+            include "../pages/admin/tugboat/edit.php";
+            break;
+        case "hapus_tugboat";
+            include "../pages/admin/tugboat/delete.php";
+            break;
     }
 ?>
 

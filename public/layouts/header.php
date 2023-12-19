@@ -37,11 +37,13 @@
     <link rel="stylesheet" href="../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
     <link rel="stylesheet" href="../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
     <link rel="stylesheet" href="../assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" />
-    <link rel="stylesheet" href="../assets/vendor/libs/select2/select2.css" />
     <link rel="stylesheet" href="../assets/vendor/libs/@form-validation/umd/styles/index.min.css" />
 
     <link rel="stylesheet" href="../assets/vendor/libs/animate-css/animate.css" />
     <link rel="stylesheet" href="../assets/vendor/libs/sweetalert2/sweetalert2.css" />
+    <link rel="stylesheet" href="../assets/vendor/libs/select2/select2.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
 

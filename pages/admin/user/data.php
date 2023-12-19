@@ -49,7 +49,7 @@ if (!isset($_SESSION['nama'])) {
                             <tr>
                                 <th>No</th>
                                 <th>Username</th>
-                                <th>Password</th>
+                                <th>Password Terenkripsi</th>
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Actions</th>
