@@ -95,6 +95,9 @@ if (!isset($_SESSION['idUser'])) {
         case "hapus_tugboat";
             include "../pages/admin/tugboat/delete.php";
             break;
+        case "detail_tugboat";
+            include "../pages/admin/tugboat/detail.php";
+            break;
     }
 ?>
 

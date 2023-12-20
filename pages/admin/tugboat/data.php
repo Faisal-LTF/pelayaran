@@ -49,6 +49,7 @@ if (!isset($_SESSION['nama'])) {
                                 <th>Jenis Kapal</th>
                                 <th>Jenis Mesin</th>
                                 <th>Flag</th>
+                                <th>Detail</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -71,7 +72,10 @@ if (!isset($_SESSION['nama'])) {
                                     <td class="w-5" align="left"><?= $row['namaJenisKapal']; ?></td>
                                     <td class="w-5" align="left"><?= $row['jenisMesin']; ?></td>
                                     <td class="w-5" align="left"><?= $row['namaFlag']; ?></td>
-
+                                    <td class="w-5">
+                                        <a class="badge btn-success" href="?page=detail_tugboat&id=<?= $row[0]; ?>"><i class="fa fa-info-circle"></i>
+                                            Detail</a></li>
+                                    </td>
                                     <td class="w-5">
                                         <div class=" mt-3">
                                             <button type="button" class="btn btn-primary dropdown-toggle border-radius-lg px-3 py-1 " id="dropdownMenuButton" data-bs-toggle="dropdown">
