@@ -46,41 +46,39 @@ if (!isset($_SESSION['nama'])) {
                             <tr>
                                 <th>No</th>
                                 <th>Fleet</th>
-                                <th>Tahun Pembangunan</th>
                                 <th>Jenis Kapal</th>
-                                <th>Panjang</th>
-                                <th>Lebar</th>
-                                <th>Dalam</th>
-                                <th>NT (ISI BERSIH)</th>
-                                <th>GT</th>
-                                <th>Tanda Pendaftaran</th>
-                                <th>Tempat Pendaftaran</th>
-                                <th>Call Sign</th>
                                 <th>Jenis Mesin</th>
-                                <th>House Power</th>
                                 <th>Flag</th>
-                                <th>NO IMO</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
+
                             $no = 1;
-                            $query = mysqli_query($link, "SELECT * FROM tugboat");
+                            $query = mysqli_query($link, "SELECT t.*, jk.namaJenisKapal, jm.jenisMesin, f.namaFlag 
+                            FROM tugboat t
+                            JOIN jenis_kapal jk ON t.idJenisKapal = jk.idJenisKapal
+                            JOIN jenis_mesin jm ON t.idJenisMesin = jm.idJenisMesin
+                            JOIN flag f ON t.idFlag = f.idFlag WHERE t.idJenisKapal = 9 ");
                             $i = 1;
                             while ($row = $query->fetch_array()) {
                             ?>
                                 <tr>
 
                                     <td class="w-0" align="left"><?= $i++ ?></td>
-                                    <td class="w-5" align="left"><?= $row['namatugbout']; ?></td>
+                                    <td class="w-5" align="left"><?= $row['namaKapal']; ?></td>
+                                    <td class="w-5" align="left"><?= $row['namaJenisKapal']; ?></td>
+                                    <td class="w-5" align="left"><?= $row['jenisMesin']; ?></td>
+                                    <td class="w-5" align="left"><?= $row['namaFlag']; ?></td>
+
                                     <td class="w-5">
                                         <div class=" mt-3">
                                             <button type="button" class="btn btn-primary dropdown-toggle border-radius-lg px-3 py-1 " id="dropdownMenuButton" data-bs-toggle="dropdown">
                                                 <i class="fa fa-bars"></i>
                                             </button>
                                             <ul class="dropdown-menu shadow-lg mt-2  dropdown-menu-end px-2 py-2 me-sm-n4" role="menu">
-                                                <li><a class="dropdown-item border-radius-md" href="?page=edit_tugbout&id=<?= $row[0]; ?>"><i class="fa fa-edit"></i>
+                                                <li><a class="dropdown-item border-radius-md" href="?page=edit_tugboat&id=<?= $row[0]; ?>"><i class="fa fa-edit"></i>
                                                         Edit Data</a></li>
                                                 <li><a class="dropdown-item border-radius-md" onclick="confirmDelete(<?= $row[0]; ?>);" href="#">
                                                         <i class="fa fa-trash-o"></i> Hapus

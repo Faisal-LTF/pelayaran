@@ -111,10 +111,21 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#multicol-countri').select2();
+        $('#multicol-ships').select2();
     });
 </script>
 
+<script>
+    $(document).ready(function() {
+        $('#multicol-engine').select2();
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#multicol-flag').select2();
+    });
+</script>
 
 
 </body>

@@ -42,27 +42,26 @@ if (!isset($_SESSION['nama'])) {
                                         <label class="form-label" for="basic-icon-default-fullname">Fleet</label>
                                         <div class="input-group input-group-merge">
                                             <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-ship"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Fleet" name="fleet" aria-label="Fleet" aria-describedby="basic-icon-default-fullname2" required />
+                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Fleet" name="namaKapal" aria-label="Fleet" aria-describedby="basic-icon-default-fullname2" required />
                                         </div>
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label class="form-label" for="multicol-countri">Jenis Mesin</label>
+                                        <label class="form-label" for="multicol-ships">Jenis Kapal</label>
                                         <div class="input-groupp input-group-merge">
                                             <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-report-search"></i></span>
-                                            <!-- Mengganti dropdown select dengan input teks dan ikon -->
-                                            <select id="multicol-countri" class="select2 form-select" data-allow-clear="true">
+                                            <select id="multicol-ships" class="select2 form-select" data-allow-clear="true" name="idJenisKapal" required>
                                                 <option value="">Select</option>
                                                 <?php
-                                                $sql = ("SELECT * FROM  jenis_mesin");
+                                                $sql = ("SELECT * FROM  jenis_kapal");
                                                 $hasil = mysqli_query($link, $sql);
                                                 $no = 0;
                                                 while ($data = mysqli_fetch_array($hasil)) {
                                                     $no++;
                                                 ?>
                                                     <option value="<?php echo
-                                                                    $data['idJenisMesin']; ?>">
+                                                                    $data['idJenisKapal']; ?>">
                                                         <?php echo
-                                                        $data['jenisMesin']; ?>
+                                                        $data['namaJenisKapal']; ?>
                                                     </option>
                                                 <?php
                                                 }
@@ -99,10 +98,10 @@ if (!isset($_SESSION['nama'])) {
                                         </div>
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label class="form-label" for="basic-icon-default-fullname">NT (ISI BERSIH)</label>
+                                        <label class="form-label" for="basic-icon-default-fullname">NT ( ISI BERSIH )</label>
                                         <div class="input-group input-group-merge">
                                             <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-box-padding"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="NT (ISI BERSIH" name="nt" aria-label="NT (ISI BERSIH" aria-describedby="basic-icon-default-fullname2" required />
+                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="NT ( ISI BERSIH )" name="nt" aria-label="NT (ISI BERSIH" aria-describedby="basic-icon-default-fullname2" required />
                                         </div>
                                     </div>
                                     <div class="mb-3 col-md-6">
@@ -134,10 +133,27 @@ if (!isset($_SESSION['nama'])) {
                                         </div>
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label class="form-label" for="basic-icon-default-fullname">Jenis Mesin</label>
-                                        <div class="input-group input-group-merge">
+                                        <label class="form-label" for="multicol-engine">Jenis Mesin</label>
+                                        <div class="input-groupp input-group-merge">
                                             <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-engine"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Jenis Kapal" name="namaJenisKapal" aria-label="Jenis Kapal" aria-describedby="basic-icon-default-fullname2" required />
+                                            <select id="multicol-engine" class="select2 form-select" data-allow-clear="true" name="idJenisMesin" required>
+                                                <option value="">Select</option>
+                                                <?php
+                                                $sql = ("SELECT * FROM  jenis_mesin");
+                                                $hasil = mysqli_query($link, $sql);
+                                                $no = 0;
+                                                while ($data = mysqli_fetch_array($hasil)) {
+                                                    $no++;
+                                                ?>
+                                                    <option value="<?php echo
+                                                                    $data['idJenisMesin']; ?>">
+                                                        <?php echo
+                                                        $data['jenisMesin']; ?>
+                                                    </option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 col-md-6">
@@ -148,10 +164,27 @@ if (!isset($_SESSION['nama'])) {
                                         </div>
                                     </div>
                                     <div class="mb-3 col-md-12">
-                                        <label class="form-label" for="basic-icon-default-fullname">Flag</label>
-                                        <div class="input-group input-group-merge">
+                                        <label class="form-label" for="multicol-flag">Flag</label>
+                                        <div class="input-groupp input-group-merge">
                                             <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-flag"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Flag" name="flag" aria-label="Flag" aria-describedby="basic-icon-default-fullname2" required />
+                                            <select id="multicol-flag" class="select2 form-select" data-allow-clear="true" name="idFlag" required>
+                                                <option value="">Select</option>
+                                                <?php
+                                                $sql = ("SELECT * FROM flag");
+                                                $hasil = mysqli_query($link, $sql);
+                                                $no = 0;
+                                                while ($data = mysqli_fetch_array($hasil)) {
+                                                    $no++;
+                                                ?>
+                                                    <option value="<?php echo
+                                                                    $data['idFlag']; ?>">
+                                                        <?php echo
+                                                        $data['namaFlag']; ?>
+                                                    </option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 col-md-12">
@@ -183,9 +216,41 @@ if (!isset($_SESSION['nama'])) {
     <?php
     if (isset($_POST['simpan'])) {
 
-        $namaJenisKapal = $_POST['namaJenisKapal'];
+        $idJenisKapal = $_POST['idJenisKapal'];
+        $idJenisMesin = $_POST['idJenisMesin'];
+        $idFlag = $_POST['idFlag'];
+        $namaKapal = $_POST['namaKapal'];
+        $tahunPembangunan = $_POST['tahunPembangunan'];
+        $panjang = $_POST['panjang'];
+        $lebar = $_POST['lebar'];
+        $dalam = $_POST['dalam'];
+        $nt = $_POST['nt'];
+        $gt = $_POST['gt'];
+        $tandaPendaftaran = $_POST['tandaPendaftaran'];
+        $tempatPendaftaran = $_POST['tempatPendaftaran'];
+        $callSign = $_POST['callSign'];
+        $housePower = $_POST['housePower'];
+        $noImo = $_POST['noImo'];
 
-        $simpan = $link->query("INSERT INTO jenis_kapal (namaJenisKapal) VALUES ('$namaJenisKapal')");
+        $simpan = $link->query("INSERT INTO tugboat VALUES (
+            '', 
+            '$idJenisKapal',
+            '$idJenisMesin',
+            '$idFlag',
+            '$namaKapal',
+            '$tahunPembangunan',
+            '$panjang',
+            '$lebar',
+            '$dalam',
+            '$nt',
+            '$gt',
+            '$tandaPendaftaran',
+            '$tempatPendaftaran',
+            '$callSign',
+            '$housePower',
+            '$noImo'
+            
+            )");
 
         if ($simpan) {
             echo "<script>
@@ -197,7 +262,7 @@ if (!isset($_SESSION['nama'])) {
                     },
                     buttonsStyling: false
                 }).then(function() {
-                window.location.href = '?page=data_jenisKapal'; 
+                window.location.href = '?page=data_tugboat'; 
             });
         </script>";
         } else {
@@ -210,7 +275,7 @@ if (!isset($_SESSION['nama'])) {
                     },
                     buttonsStyling: false
                 }).then(function() {
-                window.location.href = '?page=tambah_jenisKapal'; 
+                window.location.href = '?page=tambah_tugboat'; 
             });
         </script>";
         }
