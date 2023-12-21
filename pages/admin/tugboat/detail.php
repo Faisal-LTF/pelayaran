@@ -18,7 +18,7 @@ if (!isset($_SESSION['nama'])) {
 
     <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y ">
-            <h4 class="py-1 ms-3 mb-1"><span class="text-muted fw-light">Detail Kapal </span><?= $data['namaKapal'] ?></h4>
+            <h4 class="py-1 ms-3 mb-1"><span class="text-muted fw-light">Detail Data </span><?= $data['namaKapal'] ?></h4>
             <div class="col-12 text-end mb-3">
                 <a href="?page=data_tugboat" class="btn btn-primary">Kembali</a>
             </div>
@@ -51,19 +51,7 @@ if (!isset($_SESSION['nama'])) {
                                 <div class="row">
                                     <div class="col-xl">
                                         <form data-toggle="validator" action="" method="POST" enctype="multipart/form-data">
-                                            <?php
-                                            if ($status) {
-                                            ?>
 
-                                                <div class="alert alert-danger alert-dismissible">
-                                                    <button class="close" type="button" data-dismiss="alert" ariahidden="true">&times;
-                                                    </button>
-                                                    <h4><i class="icon fa fa-close">Gagal! </i></h4>
-                                                    <?php echo $status; ?>
-                                                </div>
-                                            <?php
-                                            }
-                                            ?>
                                             <div class="row">
                                                 <div class="mb-3 col-md-6">
                                                     <label class="form-label" for="basic-icon-default-fullname">Fleet</label>
@@ -178,40 +166,21 @@ if (!isset($_SESSION['nama'])) {
                             </div>
                             <div class="tab-pane fade" id="form-tabs-account" role="tabpanel">
                                 <form>
-                                    <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="formtabs-username">Username</label>
-                                            <input type="text" id="formtabs-username" class="form-control" placeholder="john.doe" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="formtabs-email">Email</label>
+                                    <div class="row">
+                                        <div class="mb-3 col-md-6">
+                                            <label class="form-label" for="basic-icon-default-fullname">Fleet</label>
                                             <div class="input-group input-group-merge">
-                                                <input type="text" id="formtabs-email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="formtabs-email2" />
-                                                <span class="input-group-text" id="formtabs-email2">@example.com</span>
+                                                <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-ship"></i></span>
+                                                <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Fleet" name="namaKapal" aria-label="Fleet" aria-describedby="basic-icon-default-fullname2" value="<?= $data['namaKapal'] ?>" readonly />
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-password-toggle">
-                                                <label class="form-label" for="formtabs-password">Password</label>
-                                                <div class="input-group input-group-merge">
-                                                    <input type="password" id="formtabs-password" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="formtabs-password2" />
-                                                    <span class="input-group-text cursor-pointer" id="formtabs-password2"><i class="ti ti-eye-off"></i></span>
-                                                </div>
+                                        <div class="mb-3 col-md-6">
+                                            <label class="form-label" for="basic-icon-default-fullname">Jenis Kapal</label>
+                                            <div class="input-group input-group-merge">
+                                                <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-report-search"></i></span>
+                                                <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Fleet" name="namaKapal" aria-label="Fleet" aria-describedby="basic-icon-default-fullname2" value="<?= $data['namaJenisKapal'] ?>" readonly />
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-password-toggle">
-                                                <label class="form-label" for="formtabs-confirm-password">Confirm Password</label>
-                                                <div class="input-group input-group-merge">
-                                                    <input type="password" id="formtabs-confirm-password" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="formtabs-confirm-password2" />
-                                                    <span class="input-group-text cursor-pointer" id="formtabs-confirm-password2"><i class="ti ti-eye-off"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="pt-4">
-                                        <button type="submit" class="btn btn-primary me-sm-3 me-1">Submit</button>
-                                        <button type="reset" class="btn btn-label-secondary">Cancel</button>
                                     </div>
                                 </form>
                             </div>

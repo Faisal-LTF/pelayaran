@@ -1557,16 +1557,16 @@
                                             <div data-i18n="Jenis Mesin">Jenis Mesin</div>
                                         </a>
                                     </li>
-                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_sertfikat' || $_GET['page'] == 'tambah_sertfikat' || $_GET['page'] == 'edit_sertfikat')) echo 'active'; ?>">
-                                        <a href="?page=data_sertfikat" class="menu-link">
-                                            <i class="menu-icon tf-icons ti ti-report-search"></i>
+                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_sertifikat' || $_GET['page'] == 'tambah_sertifikat' || $_GET['page'] == 'edit_sertifikat')) echo 'active'; ?>">
+                                        <a href="?page=data_sertifikat" class="menu-link">
+                                            <i class="menu-icon tf-icons ti ti-file-certificate"></i>
                                             <div data-i18n="Jenis Sertifikat">Jenis Sertifikat</div>
                                         </a>
                                     </li>
                                     <li class="menu-header small text-uppercase">
                                         <span class="menu-header-text">Data Kapal</span>
                                     </li>
-                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_tugboat' || $_GET['page'] == 'tambah_tugboat' || $_GET['page'] == 'edit_tugboat')) echo 'active'; ?>">
+                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_tugboat' || $_GET['page'] == 'tambah_tugboat' || $_GET['page'] == 'edit_tugboat' || $_GET['page'] == 'detail_tugboat')) echo 'active'; ?>">
                                         <a href="?page=data_tugboat" class="menu-link">
                                             <i class="menu-icon tf-icons ti ti-ship"></i>
                                             <div data-i18n="Tugboat">Tugboat</div>
