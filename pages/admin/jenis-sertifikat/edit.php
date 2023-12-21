@@ -74,7 +74,7 @@ if (!isset($_SESSION['nama'])) {
 
 namaSertifikat = '$namaSertifikat'
 
-WHERE idSertifikat = '$id'");
+WHERE idJenisSertifikat = '$id'");
 
         if ($edit) {
             echo "<script>

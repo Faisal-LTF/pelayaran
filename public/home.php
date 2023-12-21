@@ -111,6 +111,19 @@ if (!isset($_SESSION['idUser'])) {
         case "hapus_sertifikat";
             include "../pages/admin/jenis-sertifikat/delete.php";
             break;
+            /// Sertifikat TUGBOAT
+        case "data_sertTugboat";
+            include "../pages/admin/sertifikat-tugboat/data.php";
+            break;
+        case "tambah_sertTugboat";
+            include "../pages/admin/sertifikat-tugboat/add.php";
+            break;
+        case "edit_sertTugboat";
+            include "../pages/admin/sertifikat-tugboat/edit.php";
+            break;
+        case "hapus_sertTugboat";
+            include "../pages/admin/sertifikat-tugboat/delete.php";
+            break;
     }
 ?>
 

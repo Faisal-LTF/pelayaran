@@ -1584,6 +1584,36 @@
                                             <div data-i18n="Support">Support</div>
                                         </a>
                                     </li>
+                                    <li class="menu-header small text-uppercase">
+                                        <span class="menu-header-text">Serfitikat </span>
+                                    </li>
+                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_sertTugboat' || $_GET['page'] == 'tambah_sertTugboat' || $_GET['page'] == 'edit_sertTugboat')) echo 'active'; ?>">
+                                        <a href="?page=data_sertTugboat" class="menu-link">
+                                            <i class="menu-icon tf-icons ti ti-certificate"></i>
+                                            <div data-i18n="Sertifikat Tugboat">Sertifikat Tugboat</div>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_sertBarge' || $_GET['page'] == 'tambah_sertBarge' || $_GET['page'] == 'edit_sertBarge')) echo 'active'; ?>">
+                                        <a href="?page=data_sertBarge" class="menu-link">
+                                            <i class="menu-icon tf-icons ti ti-certificate"></i>
+                                            <div data-i18n="Sertifikat Barge">Sertifikat Barge</div>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_sertSupport' || $_GET['page'] == 'tambah_sertSupport' || $_GET['page'] == 'edit_sertSupport')) echo 'active'; ?>">
+                                        <a href="?page=data_sertSupport" class="menu-link">
+                                            <i class="menu-icon tf-icons ti ti-certificate"></i>
+                                            <div data-i18n="Sertifikat Support">Sertifikat Support</div>
+                                        </a>
+                                    </li>
+                                    <li class="menu-header small text-uppercase">
+                                        <span class="menu-header-text">Clearen </span>
+                                    </li>
+                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_clearance' || $_GET['page'] == 'tambah_clearance' || $_GET['page'] == 'edit_clearance')) echo 'active'; ?>">
+                                        <a href="?page=data_clearance" class="menu-link">
+                                            <i class="menu-icon tf-icons ti ti-chart-arcs-3"></i>
+                                            <div data-i18n="SOON!!">SOON !!</div>
+                                        </a>
+                                    </li>
                                 </ul>
                             </aside>
                             <!-- / Menu -->

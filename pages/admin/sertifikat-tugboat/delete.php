@@ -4,7 +4,7 @@
 <?php
 $id = $_GET['id'];
 
-$query = $link->query(" DELETE FROM jenis_sertifikat WHERE idJenisSertifikat = '$id' ");
+$query = $link->query(" DELETE FROM tugboat WHERE idTugboat = '$id' ");
 if ($query) {
     echo "<script>
             Swal.fire({
@@ -15,7 +15,7 @@ if ($query) {
                     },
                     buttonsStyling: false
                 }).then(function() {
-                window.location.href = '?page=data_sertifikat'; 
+                window.location.href = '?page=data_tugboat'; 
             });
         </script>";
 } else {
@@ -29,7 +29,7 @@ if ($query) {
                     },
                     buttonsStyling: false
                 }).then(function() {
-                window.location.href = '?page=data_sertifikat'; 
+                window.location.href = '?page=data_tugboat'; 
             });
         </script>";
 }
