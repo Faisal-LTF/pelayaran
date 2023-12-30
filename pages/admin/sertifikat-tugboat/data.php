@@ -50,6 +50,7 @@ if (!isset($_SESSION['nama'])) {
                                 <th>Tanggal Terbit</th>
                                 <th>Tanggal Exp</th>
                                 <th>Status</th>
+                                <th>File Berkas</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -76,25 +77,37 @@ if (!isset($_SESSION['nama'])) {
                                         if ($row['permanent']) {
                                             echo '<span class="badge bg-success">PERMANENT</span>';
                                         } else {
-                                            // Hitung selisih tanggal
-                                            $tglTerbit = new DateTime($row['tglTerbit']);
+                                            // Tanggal sekarang (real time)
+                                            $tanggalSekarang = new DateTime();
+
+                                            // Tanggal kedaluwarsa dari database
                                             $tglExp = new DateTime($row['tglExp']);
-                                            $selisih = $tglTerbit->diff($tglExp);
+
+                                            // Hitung selisih tanggal
+                                            $selisih = $tanggalSekarang->diff($tglExp);
                                             $selisihHari = $selisih->days;
 
-                                            // Tampilkan selisih dalam format hari
-                                            $formattedSelisih = $selisih->format('%a days');
-
-                                            // Tentukan warna berdasarkan kondisi
-                                            $badgeColor = '';
+                                            // Tampilkan selisih dalam format hari, jam, dan menit jika kurang dari 2 hari
                                             if ($selisihHari <= 0) {
                                                 $badgeColor = 'bg-danger';
+                                                $formattedSelisih = 'Expired';
+                                            } elseif ($selisihHari == 1) {
+                                                $badgeColor = 'bg-danger';
+                                                $formattedSelisih = '1 day';
                                             } elseif ($selisihHari <= 10) {
                                                 $badgeColor = 'bg-danger';
+                                                $formattedSelisih = $selisihHari . ' days';
                                             } elseif ($selisihHari <= 30) {
                                                 $badgeColor = 'bg-warning';
+                                                $formattedSelisih = $selisihHari . ' days';
                                             } else {
                                                 $badgeColor = 'bg-info'; // Warna biru untuk lebih dari 30 hari
+                                                $formattedSelisih = $selisihHari . ' days';
+                                            }
+
+                                            // Jika kurang dari 2 hari, tambahkan informasi waktu (jam dan menit)
+                                            if ($selisihHari < 2) {
+                                                $formattedSelisih .= ' ' . $selisih->format('%H:%I Menit');
                                             }
 
                                             // Tampilkan badge dengan warna yang sesuai
@@ -102,10 +115,16 @@ if (!isset($_SESSION['nama'])) {
                                         }
                                         ?>
                                     </td>
-
-
-
-
+                                    <td class="w-10" align="center">
+                                        <?php
+                                        if (!empty($row['berkas'])) {
+                                            $pdfPath = '../file-sertifikat-tugboat/' . $row['berkas'];
+                                            echo "<a class='badge bg-success ' href='$pdfPath' download>Download</a>";
+                                        } else {
+                                            echo "File PDF tidak tersedia";
+                                        }
+                                        ?>
+                                    </td>
 
                                     <td class="w-5">
                                         <div class=" mt-3">
@@ -113,7 +132,7 @@ if (!isset($_SESSION['nama'])) {
                                                 <i class="fa fa-bars"></i>
                                             </button>
                                             <ul class="dropdown-menu shadow-lg mt-2  dropdown-menu-end px-2 py-2 me-sm-n4" role="menu">
-                                                <li><a class="dropdown-item border-radius-md" href="?page=edit_tugboat&id=<?= $row[0]; ?>"><i class="fa fa-edit"></i>
+                                                <li><a class="dropdown-item border-radius-md" href="?page=edit_sertTugboat&id=<?= $row[0]; ?>"><i class="fa fa-edit"></i>
                                                         Edit Data</a></li>
                                                 <li><a class="dropdown-item border-radius-md" onclick="confirmDelete(<?= $row[0]; ?>);" href="#">
                                                         <i class="fa fa-trash-o"></i> Hapus

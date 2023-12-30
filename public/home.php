@@ -98,6 +98,9 @@ if (!isset($_SESSION['idUser'])) {
         case "detail_tugboat";
             include "../pages/admin/tugboat/detail.php";
             break;
+        case "laporan_tugboat";
+            include "../pages/admin/tugboat/laporan.php";
+            break;
             /// Jenis Sertifikat
         case "data_sertifikat";
             include "../pages/admin/jenis-sertifikat/data.php";
@@ -123,6 +126,9 @@ if (!isset($_SESSION['idUser'])) {
             break;
         case "hapus_sertTugboat";
             include "../pages/admin/sertifikat-tugboat/delete.php";
+            break;
+        case "file_tugboat";
+            include "../pages/admin/sertifikat-tugboat/hapus_berkas.php";
             break;
     }
 ?>

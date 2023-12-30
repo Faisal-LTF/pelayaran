@@ -7,11 +7,10 @@ if (!isset($_SESSION['nama'])) {
 } else {
 
     $id = $_GET['id'];
-    $query = $link->query("SELECT t.*, jk.namaJenisKapal, jm.jenisMesin, f.namaFlag 
-    FROM tugboat t
-    JOIN jenis_kapal jk ON t.idJenisKapal = jk.idJenisKapal
-    JOIN jenis_mesin jm ON t.idJenisMesin = jm.idJenisMesin
-    JOIN flag f ON t.idFlag = f.idFlag WHERE idTugboat = '$id'");
+    $query = $link->query("SELECT st.*, js.namaSertifikat, t.namaKapal   
+    FROM sertifikat_tugboat st
+    JOIN jenis_sertifikat js ON st.idJenisSertifikat = js.idJenisSertifikat
+    JOIN tugboat t ON st.idTugboat = t.idTugboat WHERE idSertifikatTugboat = '$id'");
     $data = $query->fetch_array();
 
 ?>
@@ -19,9 +18,9 @@ if (!isset($_SESSION['nama'])) {
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y ">
-            <h4 class="py-1 ms-3 mb-1"><span class="text-muted fw-light">Edit</span> Data Kapal</h4>
+            <h4 class="py-1 ms-3 mb-1"><span class="text-muted fw-light">Edit</span> Sertifikat Kapal</h4>
             <div class="col-12 text-end mb-3">
-                <a href="?page=data_tugboat" class="btn btn-primary">Kembali</a>
+                <a href="?page=data_sertTugboat" class="btn btn-primary">Kembali</a>
             </div>
             <!-- Basic Layout -->
             <div class="row">
@@ -32,7 +31,7 @@ if (!isset($_SESSION['nama'])) {
                             <small class="text-muted float-end"></small>
                         </div>
                         <div class="card-body">
-                            <form data-toggle="validator" action="" method="POST" enctype="multipart/form-data">
+                            <form id="myForm" data-toggle="validator" action="" method="POST" enctype="multipart/form-data">
                                 <?php
                                 if ($status) {
                                 ?>
@@ -48,119 +47,24 @@ if (!isset($_SESSION['nama'])) {
                                 ?>
                                 <div class="row">
                                     <div class="mb-3 col-md-6">
-                                        <label class="form-label" for="basic-icon-default-fullname">Fleet</label>
-                                        <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-ship"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Fleet" name="namaKapal" aria-label="Fleet" aria-describedby="basic-icon-default-fullname2" value="<?= $data['namaKapal'] ?>" required />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-md-6">
-                                        <label class="form-label" for="multicol-ships">Jenis Kapal</label>
-                                        <div class="input-groupp input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-report-search"></i></span>
-                                            <select id="multicol-ships" class="select2 form-select" data-allow-clear="true" name="idJenisKapal" required>
-                                                <option value="">Select</option>
-                                                <?php $q = $link->query("SELECT * FROM jenis_kapal ");
-                                                while ($d =
-                                                    $q->fetch_array()
-                                                ) {
-                                                    if ($d['idJenisKapal'] == $data['idJenisKapal']) { ?>
-                                                        <option value="<?= $d['idJenisKapal']; ?>" selected="<?= $d['idJenisKapal']; ?>">
-                                                            <?= $d['namaJenisKapal'] ?>
-                                                        </option>
-                                                    <?php
-                                                    } else {
-                                                    ?>
-                                                        <option value="<?= $d['idJenisKapal'] ?>">
-                                                            <?= $d['namaJenisKapal'] ?>
-                                                        </option>
-                                                <?php }
-                                                } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-md-12">
-                                        <label class="form-label" for="basic-icon-default-fullname">Tahun Pembangunan</label>
-                                        <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-number"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Tahun Pembangunan" name="tahunPembangunan" aria-label="Tahun Pembangunan" aria-describedby="basic-icon-default-fullname2" value="<?= $data['tahunPembangunan'] ?>" required />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="basic-icon-default-fullname">Panjang</label>
-                                        <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-ruler-measure"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Panjang" name="panjang" aria-label="Panjang" aria-describedby="basic-icon-default-fullname2" value="<?= $data['panjang'] ?>" required />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="basic-icon-default-fullname">Lebar</label>
-                                        <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-ruler-measure"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Lebar" name="lebar" aria-label="Lebar" aria-describedby="basic-icon-default-fullname2" value="<?= $data['lebar'] ?>" required />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="basic-icon-default-fullname">Dalam</label>
-                                        <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-ruler-measure"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Dalam" name="dalam" aria-label="Dalam" aria-describedby="basic-icon-default-fullname2" value="<?= $data['dalam'] ?>" required />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-md-6">
-                                        <label class="form-label" for="basic-icon-default-fullname">NT ( ISI BERSIH )</label>
-                                        <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-box-padding"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="NT ( ISI BERSIH )" name="nt" aria-label="NT (ISI BERSIH" aria-describedby="basic-icon-default-fullname2" value="<?= $data['nt'] ?>" required />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-md-6">
-                                        <label class="form-label" for="basic-icon-default-fullname">GT</label>
-                                        <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-box-padding"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="GT" name="gt" aria-label="GT" aria-describedby="basic-icon-default-fullname2" value="<?= $data['gt'] ?>" required />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-md-12">
-                                        <label class="form-label" for="basic-icon-default-fullname">Tanda Pendaftaran</label>
-                                        <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-report-analytics"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Tanda Pendaftaran" name="tandaPendaftaran" aria-label="Tanda Pendaftaran" aria-describedby="basic-icon-default-fullname2" value="<?= $data['tandaPendaftaran'] ?>" required />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-md-12">
-                                        <label class="form-label" for="basic-icon-default-fullname">Tempat Pendaftaran</label>
-                                        <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-report-analytics"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Tempat Pendaftaran" name="tempatPendaftaran" aria-label="Tempat Pendaftaran" aria-describedby="basic-icon-default-fullname2" value="<?= $data['tempatPendaftaran'] ?>" required />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-md-12">
-                                        <label class="form-label" for="basic-icon-default-fullname">Call Sign</label>
-                                        <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-brand-hipchat"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Call Sign" name="callSign" aria-label="Call Sign" aria-describedby="basic-icon-default-fullname2" value="<?= $data['callSign'] ?>" required />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-md-6">
-                                        <label class="form-label" for="multicol-engine">Jenis Mesin</label>
+                                        <label class="form-label" for="multicol-ships">Fleet</label>
                                         <div class="input-groupp input-group-merge">
                                             <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-engine"></i></span>
-                                            <select id="multicol-engine" class="select2 form-select" data-allow-clear="true" name="idJenisMesin" required>
+                                            <select id="multicol-ships" class="select2 form-select" data-allow-clear="true" name="idTugboat" required>
                                                 <option value="">Select</option>
-                                                <?php $q = $link->query("SELECT * FROM jenis_mesin ");
+                                                <?php $q = $link->query("SELECT * FROM tugboat ");
                                                 while ($d =
                                                     $q->fetch_array()
                                                 ) {
-                                                    if ($d['idJenisMesin'] == $data['idJenisMesin']) { ?>
-                                                        <option value="<?= $d['idJenisMesin']; ?>" selected="<?= $d['idJenisMesin']; ?>">
-                                                            <?= $d['jenisMesin'] ?>
+                                                    if ($d['idTugboat'] == $data['idTugboat']) { ?>
+                                                        <option value="<?= $d['idTugboat']; ?>" selected="<?= $d['idTugboat']; ?>">
+                                                            <?= $d['namaKapal'] ?>
                                                         </option>
                                                     <?php
                                                     } else {
                                                     ?>
-                                                        <option value="<?= $d['idJenisMesin'] ?>">
-                                                            <?= $d['jenisMesin'] ?>
+                                                        <option value="<?= $d['idTugboat'] ?>">
+                                                            <?= $d['namaKapal'] ?>
                                                         </option>
                                                 <?php }
                                                 } ?>
@@ -168,45 +72,83 @@ if (!isset($_SESSION['nama'])) {
                                         </div>
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label class="form-label" for="basic-icon-default-fullname">House Power</label>
-                                        <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-circuit-battery"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="House Power" name="housePower" aria-label="House Power" aria-describedby="basic-icon-default-fullname2" value="<?= $data['housePower'] ?>" required />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-md-12">
-                                        <label class="form-label" for="multicol-flag">Flag</label>
+                                        <label class="form-label" for="multicol-engine">Jenis Sertifikat</label>
                                         <div class="input-groupp input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-flag"></i></span>
-                                            <select id="multicol-flag" class="select2 form-select" data-allow-clear="true" name="idFlag" required>
+                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-engine"></i></span>
+                                            <select id="multicol-engine" class="select2 form-select" data-allow-clear="true" name="idJenisSertifikat" required>
                                                 <option value="">Select</option>
-                                                <?php $q = $link->query("SELECT * FROM flag ");
+                                                <?php $q = $link->query("SELECT * FROM jenis_sertifikat ");
                                                 while ($d =
                                                     $q->fetch_array()
                                                 ) {
-                                                    if ($d['idFlag'] == $data['idFlag']) { ?>
-                                                        <option value="<?= $d['idFlag']; ?>" selected="<?= $d['idFlag']; ?>">
-                                                            <?= $d['namaFlag'] ?>
+                                                    if ($d['idJenisSertifikat'] == $data['idJenisSertifikat']) { ?>
+                                                        <option value="<?= $d['idJenisSertifikat']; ?>" selected="<?= $d['idJenisSertifikat']; ?>">
+                                                            <?= $d['namaSertifikat'] ?>
                                                         </option>
                                                     <?php
                                                     } else {
                                                     ?>
-                                                        <option value="<?= $d['idFlag'] ?>">
-                                                            <?= $d['namaFlag'] ?>
+                                                        <option value="<?= $d['idJenisSertifikat'] ?>">
+                                                            <?= $d['namaSertifikat'] ?>
                                                         </option>
                                                 <?php }
                                                 } ?>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="mb-3 col-md-12">
-                                        <label class="form-label" for="basic-icon-default-fullname">NO IMO</label>
+                                    <div class="mb-5 col-md-12">
+                                        <label class="form-label" for="file">File</label>
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-file-filled"></i></span>
+                                            <input type="file" class="form-control" id="file" placeholder="File" name="berkas" aria-label="File" aria-describedby="basic-icon-default-fullname2" />
+                                        </div>
+                                        <?php
+                                        $berkas_lama = $data['berkas'];
+                                        $fileName = !empty($berkas_lama) ? basename($berkas_lama) : '';
+                                        ?>
+                                        <div class="mt-2">
+                                            <?php if (!empty($fileName)) : ?>
+                                                <strong>File Saat Ini:</strong> <?= $fileName ?>
+                                                <!-- <a href="javascript:void(0)" class="text-danger" onclick="deleteFile()"><i class="ti ti-x"></i></a> -->
+                                                <input name="berkas_lama" type="hidden" class="form-control input-sm" value="<?= $berkas_lama ?>">
+                                                <input name="deleteFile" type="hidden" value="1">
+                                            <?php else : ?>
+                                                <span>Tidak ada file yang diunggah</span>
+                                                <input name="berkas_lama" type="hidden" class="form-control input-sm" value="">
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 col-md-12">
+                                        <label class="switch switch-success">
+                                            <input type="checkbox" class="switch-input" name="permanent" id="switchPermanent" />
+                                            <span class="switch-toggle-slider">
+                                                <span class="switch-on">
+                                                    <i class="ti ti-check"></i>
+                                                </span>
+                                                <span class="switch-off">
+                                                    <i class="ti ti-x"></i>
+                                                </span>
+                                            </span>
+                                            <span class="switch-label">Permanent</span>
+                                        </label>
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label" for="tglTerbit">Tanggal Terbit</label>
                                         <div class="input-group input-group-merge">
                                             <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-number"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="NO IMO" name="noImo" aria-label="NO IMO" aria-describedby="basic-icon-default-fullname2" value="<?= $data['noImo'] ?>" required />
+                                            <input type="date" class="form-control" id="tglTerbit" placeholder="Tanggal Terbit" name="tglTerbit" aria-label="Tanggal Terbit" aria-describedby="basic-icon-default-fullname2" value="<?= $data['tglTerbit'] ?>" required />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label" for="tglExp">Tanggal Expired</label>
+                                        <div class="input-group input-group-merge">
+                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-number"></i></span>
+                                            <input type="date" class="form-control" id="tglExp" placeholder="Tanggal Expired" name="tglExp" aria-label="Tanggal Expired" aria-describedby="basic-icon-default-fullname2" value="<?= $data['tglExp'] ?>" required />
                                         </div>
                                     </div>
                                 </div>
+
                                 <button type="submit" name="edit" class="btn btn-primary">Edit</button>
                                 <button type="reset" name="reset" class="btn btn-danger">Reset</button>
                             </form>
@@ -217,48 +159,131 @@ if (!isset($_SESSION['nama'])) {
         </div>
 
         <script src="../assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // Inisialisasi nilai awal switch
+                var isPermanent = <?php echo $data['permanent'] ? 'true' : 'false'; ?>;
+
+                // Set status switch berdasarkan nilai dari database
+                $('#switchPermanent').prop('checked', isPermanent);
+
+                // Inisialisasi status awal tanggal dan nilai tanggal sebelumnya
+                var isSwitchChecked = $('#switchPermanent').is(':checked');
+                var prevTglTerbit = $('#tglTerbit').val();
+                var prevTglExp = $('#tglExp').val();
+                $('#tglTerbit, #tglExp').prop('disabled', isSwitchChecked);
+
+                // ...
+
+                // Lanjutkan dengan skrip switch seperti yang telah kamu definisikan sebelumnya
+                $('#tglTerbit, #tglExp').change(function() {
+                    if (!isSwitchChecked) {
+                        // ...
+                    }
+                });
+
+                $('#switchPermanent').change(function() {
+                    isSwitchChecked = $(this).is(':checked');
+                    $('#tglTerbit, #tglExp').prop('disabled', isSwitchChecked);
+
+                    if (isSwitchChecked) {
+                        // Simpan nilai tanggal sebelumnya
+                        prevTglTerbit = $('#tglTerbit').val();
+                        prevTglExp = $('#tglExp').val();
+
+                        // Hapus nilai tanggal pada mode "permanent"
+                        $('#tglTerbit, #tglExp').val('');
+                    } else {
+                        // Kembalikan nilai tanggal jika switch kembali ke mode "non-permanent"
+                        $('#tglTerbit').val(prevTglTerbit);
+                        $('#tglExp').val(prevTglExp);
+                    }
+                });
+            });
+        </script>
+        <script>
+            function deleteFile() {
+                console.log("Fungsi deleteFile dipanggil");
+                var confirmDelete = confirm("Apakah Anda yakin ingin menghapus file?");
+                if (confirmDelete) {
+                    // Use AJAX to submit the form and handle the file deletion
+                    $.ajax({
+                        type: "POST",
+                        url: "edit.php?id=<?php echo $id; ?>",
+                        // Replace with your actual script name
+                        data: {
+                            deleteFile: 1
+                        },
+                        success: function(response) {
+                            // Handle the response, e.g., display a success message
+                            var result = JSON.parse(response);
+                            if (result.status === 'success') {
+                                alert(result.message);
+                                // Optionally, refresh the page or perform other actions
+                                location.reload();
+                            } else {
+                                alert(result.message);
+                            }
+                        },
+                        error: function() {
+                            // Handle the error, e.g., display an error message
+                            alert("Error deleting file.");
+                        }
+                    });
+                }
+            }
+        </script>
 
 
     <?php
     if (isset($_POST['edit'])) {
+        $idSertifikatTugboat = $_GET['id'];
+        $idJenisSertifikat = $_POST['idJenisSertifikat'];
+        $tglTerbit = $_POST['tglTerbit'];
+        $tglExp = $_POST['tglExp'];
+        $permanent = isset($_POST['permanent']) ? 1 : 0;
 
-        $idJenisKapal = $_POST['idJenisKapal'];
-        $idJenisMesin = $_POST['idJenisMesin'];
-        $idFlag = $_POST['idFlag'];
-        $namaKapal = $_POST['namaKapal'];
-        $tahunPembangunan = $_POST['tahunPembangunan'];
-        $panjang = $_POST['panjang'];
-        $lebar = $_POST['lebar'];
-        $dalam = $_POST['dalam'];
-        $nt = $_POST['nt'];
-        $gt = $_POST['gt'];
-        $tandaPendaftaran = $_POST['tandaPendaftaran'];
-        $tempatPendaftaran = $_POST['tempatPendaftaran'];
-        $callSign = $_POST['callSign'];
-        $housePower = $_POST['housePower'];
-        $noImo = $_POST['noImo'];
+        $uploadedFile = $_FILES['berkas'];
+        $berkas_lama = $_POST['berkas_lama'];
 
-        $edit = $link->query("UPDATE tugboat SET 
+        if ($uploadedFile['error'] === 4) {
+            $berkas = $berkas_lama;
+        } else {
+            $uploadedFilePath = upload($uploadedFile, '../files/file-sertifikat-tugboat/');
+            if ($uploadedFilePath) {
+                $berkas = $uploadedFilePath;
+                $berkas_lama = NULL;
+            } else {
+                echo "Gagal mengunggah file.";
+                exit;
+            }
+        }
+        // Pastikan $link adalah objek koneksi database yang valid
+        if ($link) {
+            $stmt = $link->prepare("UPDATE sertifikat_tugboat SET idJenisSertifikat = ?, tglTerbit = ?, tglExp = ?, permanent = ?, berkas = ? WHERE idSertifikatTugboat = ?");
 
-idJenisKapal = '$idJenisKapal',
-idJenisMesin = '$idJenisMesin',
-idFlag = '$idFlag',
-namaKapal = '$namaKapal',
-tahunPembangunan = '$tahunPembangunan',
-panjang = '$panjang',
-lebar = '$lebar',
-dalam = '$dalam',
-nt = '$nt',
-gt = '$gt',
-tandaPendaftaran = '$tandaPendaftaran',
-tempatPendaftaran = '$tempatPendaftaran',
-callSign = '$callSign',
-housePower = '$housePower',
-noImo = '$noImo'
+            if ($stmt) {
+                $stmt->bind_param("issssi", $idJenisSertifikat, $tglTerbit, $tglExp, $permanent, $berkas, $idSertifikatTugboat);
 
-WHERE idTugboat = '$id'");
+                $simpan = $stmt->execute();
 
-        if ($edit) {
+                if ($simpan) {
+                    echo 'success';
+                } else {
+                    echo 'error: ' . $stmt->error;
+                }
+
+                $stmt->close();
+            } else {
+                echo 'error: ' . $link->error;
+            }
+        } else {
+            echo 'error: Database connection not available.';
+        }
+
+
+        if ($simpan) {
             echo "<script>
     Swal.fire({
         icon: 'success',
@@ -268,7 +293,7 @@ WHERE idTugboat = '$id'");
             },
             buttonsStyling: false
         }).then(function() {
-        window.location.href = '?page=data_tugboat'; 
+        window.location.href = '?page=data_sertTugboat'; 
     });
 </script>";
         } else {
@@ -281,10 +306,41 @@ WHERE idTugboat = '$id'");
             },
             buttonsStyling: false
         }).then(function() {
-        window.location.href = '?page=edit_tugboat'; 
+        window.location.href = '?page=edit_sertTugboat'; 
     });
 </script>";
         }
+    }
+}
+
+
+function upload($file, $targetDir)
+{
+    // Mendapatkan nama file asli
+    $fileName = basename($file['name']);
+
+    // Mendapatkan path file tujuan
+    $targetPath = $targetDir . $fileName;
+
+    // Mendapatkan ekstensi file
+    $fileExtension = pathinfo($targetPath, PATHINFO_EXTENSION);
+
+    // Daftar ekstensi file yang diperbolehkan
+    $allowedExtensions = array('jpg', 'jpeg', 'png', 'pdf');
+
+    // Cek apakah ekstensi file valid
+    if (in_array($fileExtension, $allowedExtensions)) {
+        // Pindahkan file ke folder tujuan
+        if (move_uploaded_file($file['tmp_name'], $targetPath)) {
+            // Jika berhasil diunggah, kembalikan path file
+            return $targetPath;
+        } else {
+            // Jika gagal mengunggah
+            return false;
+        }
+    } else {
+        // Jika ekstensi file tidak valid
+        return false;
     }
 }
 

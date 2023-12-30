@@ -86,13 +86,13 @@ if (!isset($_SESSION['nama'])) {
                                             </select>
                                         </div>
                                     </div>
-                                    <!-- <div class="mb-5 col-md-12">
-                                        <label class="form-label" for="tglTerbit">File</label>
+                                    <div class="mb-5 col-md-12">
+                                        <label class="form-label" for="file">File</label>
                                         <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-number"></i></span>
-                                            <input type="file" class="form-control" id="tglTerbit" placeholder="File" name="file" aria-label="File" aria-describedby="basic-icon-default-fullname2" required />
+                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="ti ti-file-filled"></i></span>
+                                            <input type="file" class="form-control" id="file" placeholder="File" name="berkas" aria-label="File" aria-describedby="basic-icon-default-fullname2" required />
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <div class="mb-4 col-md-12">
                                         <label class="switch switch-success">
                                             <input type="checkbox" class="switch-input" name="permanent" id="switchPermanent" />
@@ -148,10 +148,14 @@ if (!isset($_SESSION['nama'])) {
                 $('#switchPermanent').change(function() {
                     if ($(this).is(':checked')) {
                         $('#tglTerbit, #tglExp').prop('disabled', true).val('');
+                        $('#tglTerbit').removeAttr('required'); // Tidak dibutuhkan saat permanen
+                        $('#tglExp').removeAttr('required'); // Tidak dibutuhkan saat permanen
                     } else {
                         $('#tglTerbit, #tglExp').prop('disabled', false);
                         $('#tglTerbit').val(tglTerbitAwal);
                         $('#tglExp').val(tglExpAwal);
+                        $('#tglTerbit').attr('required', 'required'); // Diperlukan saat tidak permanen
+                        $('#tglExp').attr('required', 'required'); // Diperlukan saat tidak permanen
                     }
                 });
             });
@@ -163,25 +167,39 @@ if (!isset($_SESSION['nama'])) {
 
     <?php
     if (isset($_POST['simpan'])) {
-        // Tetapkan nilai parameter
+
         $idJenisSertifikat = $_POST['idJenisSertifikat'];
         $idTugboat = $_POST['idTugboat'];
         $tglTerbit = $_POST['tglTerbit'];
         $tglExp = $_POST['tglExp'];
         $permanent = isset($_POST['permanent']) ? 1 : 0;
 
-        // Persiapkan pernyataan
-        $stmt = $link->prepare("INSERT INTO sertifikat_tugboat (idJenisSertifikat, idTugboat, tglTerbit, tglExp, permanent) VALUES (?,?, ?, ?, ?)");
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        // Periksa apakah persiapan berhasil
+            $uploadedFile = $_FILES['berkas'];
+
+
+            if ($uploadedFile['error'] === 4) {
+                $berkas = $berkas_lama;
+            } else {
+                $uploadedFilePath = upload($uploadedFile, '../files/file-sertifikat-tugboat/');
+                if ($uploadedFilePath) {
+                    $berkas = $uploadedFilePath;
+                } else {
+                    echo "Gagal mengunggah file  .";
+                }
+            }
+            echo "Data berhasil diperbarui.";
+        }
+
+
+        $stmt = $link->prepare("INSERT INTO sertifikat_tugboat (idJenisSertifikat, idTugboat, tglTerbit, tglExp, permanent,berkas) VALUES (?,?,?, ?, ?, ?)");
         if ($stmt) {
-            // Ikat parameter
-            $stmt->bind_param("iissi", $idJenisSertifikat, $idTugboat, $tglTerbit, $tglExp, $permanent);
+            $stmt->bind_param("iissis", $idJenisSertifikat, $idTugboat, $tglTerbit, $tglExp, $permanent, $berkas);
 
-            // Jalankan pernyataan
+
             $simpan = $stmt->execute();
 
-            // Tutup pernyataan
             $stmt->close();
         }
 
@@ -214,4 +232,35 @@ if (!isset($_SESSION['nama'])) {
         }
     }
 }
+
+function upload($file, $targetDir)
+{
+    // Mendapatkan nama file asli
+    $fileName = basename($file['name']);
+
+    // Mendapatkan path file tujuan
+    $targetPath = $targetDir . $fileName;
+
+    // Mendapatkan ekstensi file
+    $fileExtension = pathinfo($targetPath, PATHINFO_EXTENSION);
+
+    // Daftar ekstensi file yang diperbolehkan
+    $allowedExtensions = array('jpg', 'jpeg', 'png', 'pdf');
+
+    // Cek apakah ekstensi file valid
+    if (in_array($fileExtension, $allowedExtensions)) {
+        // Pindahkan file ke folder tujuan
+        if (move_uploaded_file($file['tmp_name'], $targetPath)) {
+            // Jika berhasil diunggah, kembalikan path file
+            return $targetPath;
+        } else {
+            // Jika gagal mengunggah
+            return false;
+        }
+    } else {
+        // Jika ekstensi file tidak valid
+        return false;
+    }
+}
+
     ?>
