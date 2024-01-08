@@ -7,19 +7,20 @@ if (!isset($_SESSION['nama'])) {
 } else {
 
     $id = $_GET['id'];
-    $queryCombined = $link->query("SELECT t.*, jk.namaJenisKapal, jm.jenisMesin, f.namaFlag
-FROM tugboat t
-JOIN jenis_kapal jk ON t.idJenisKapal = jk.idJenisKapal
-JOIN jenis_mesin jm ON t.idJenisMesin = jm.idJenisMesin
-JOIN flag f ON t.idFlag = f.idFlag
-WHERE t.idTugboat = '$id'");
+    $queryCombined = $link->query("SELECT b.*, jk.namaJenisKapal, jm.jenisMesin, f.namaFlag
+FROM barge b
+JOIN jenis_kapal jk ON b.idJenisKapal = jk.idJenisKapal
+JOIN jenis_mesin jm ON b.idJenisMesin = jm.idJenisMesin
+JOIN flag f ON b.idFlag = f.idFlag
+WHERE b.idBarge = '$id'");
     $data = $queryCombined->fetch_array();
-    $certificatesQuery = $link->query("SELECT st.*, js.namaSertifikat, t.namaKapal
-    FROM sertifikat_tugboat st
-    JOIN jenis_sertifikat js ON st.idJenisSertifikat = js.idJenisSertifikat
-    JOIN tugboat t ON st.idTugboat = t.idTugboat
-    WHERE st.idTugboat = '$id'
+    $certificatesQuery = $link->query("SELECT sb.*, js.namaSertifikat, b.namaKapal
+    FROM sertifikat_barge sb
+    JOIN jenis_sertifikat js ON sb.idJenisSertifikat = js.idJenisSertifikat
+    JOIN barge b ON sb.idBarge = b.idBarge
+    WHERE sb.idBarge = '$id'
 ");
+
 
     $certificates = $certificatesQuery->fetch_all(MYSQLI_ASSOC);
 
@@ -29,7 +30,7 @@ WHERE t.idTugboat = '$id'");
         <div class="container-xxl flex-grow-1 container-p-y ">
             <h4 class="py-1 ms-3 mb-1"><span class="text-muted fw-light">Detail Data </span><?= $data['namaKapal'] ?></h4>
             <div class="col-12 text-end mb-3">
-                <a href="?page=data_tugboat" class="btn btn-primary">Kembali</a>
+                <a href="?page=data_barge" class="btn btn-primary">Kembali</a>
             </div>
 
             <div class="row">
@@ -38,17 +39,17 @@ WHERE t.idTugboat = '$id'");
                         <div class="card-header pt-2">
                             <ul class="nav nav-tabs card-header-tabs" role="tablist">
                                 <li class="nav-item">
-                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#form-tabs-personal" role="tab" aria-selected="true">
+                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#form-tabs-detail" role="tab" aria-selected="true">
                                         Detail
                                     </button>
                                 </li>
                                 <li class="nav-item">
-                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#form-tabs-account" role="tab" aria-selected="false">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#form-tabs-sert" role="tab" aria-selected="false">
                                         Sertifikat
                                     </button>
                                 </li>
                                 <li class="nav-item">
-                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#form-tabs-social" role="tab" aria-selected="false">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#form-tabs-clearance" role="tab" aria-selected="false">
                                         Clearance
                                     </button>
                                 </li>
@@ -56,7 +57,7 @@ WHERE t.idTugboat = '$id'");
                         </div>
 
                         <div class="tab-content">
-                            <div class="tab-pane fade active show" id="form-tabs-personal" role="tabpanel">
+                            <div class="tab-pane fade active show" id="form-tabs-detail" role="tabpanel">
                                 <div class="row">
                                     <div class="col-xl">
                                         <form data-toggle="validator" action="" method="POST" enctype="multipart/form-data">
@@ -172,7 +173,7 @@ WHERE t.idTugboat = '$id'");
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="form-tabs-account" role="tabpanel">
+                            <div class="tab-pane fade" id="form-tabs-sert" role="tabpanel">
                                 <form>
                                     <div class="row">
                                         <?php
@@ -261,7 +262,7 @@ WHERE t.idTugboat = '$id'");
                                 </form>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="form-tabs-social" role="tabpanel">
+                        <div class="tab-pane fade" id="form-tabs-clearance" role="tabpanel">
                             <form>
                                 SOON!
                             </form>

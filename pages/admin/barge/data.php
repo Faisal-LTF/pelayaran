@@ -27,7 +27,7 @@ if (!isset($_SESSION['nama'])) {
                 buttonsStyling: false
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = `?page=hapus_sertTugboat&id=${id}`;
+                    window.location.href = `?page=hapus_barge&id=${id}`;
                 }
             });
         }
@@ -37,7 +37,7 @@ if (!isset($_SESSION['nama'])) {
     <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="col-12 text-end mb-3">
-                <a href="?page=tambah_sertTugboat" class="btn btn-primary">Tambah Data</a>
+                <a href="?page=tambah_barge" class="btn btn-primary">Tambah Data</a>
             </div>
             <div class="card">
                 <div class="card-datatable table-responsive pt-0">
@@ -45,94 +45,44 @@ if (!isset($_SESSION['nama'])) {
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Sertifikat</th>
                                 <th>Fleet</th>
-                                <th>Tanggal Terbit</th>
-                                <th>Tanggal Exp</th>
-                                <th>Status</th>
-                                <th>File Berkas</th>
+                                <th>Jenis Kapal</th>
+                                <th>Jenis Mesin</th>
+                                <th>Flag</th>
+                                <th>Detail</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
+
                             $no = 1;
-                            $query = mysqli_query($link, "SELECT st.*, js.namaSertifikat, t.namaKapal   
-                FROM sertifikat_tugboat st
-                JOIN jenis_sertifikat js ON st.idJenisSertifikat = js.idJenisSertifikat
-                JOIN tugboat t ON st.idTugboat = t.idTugboat
-                WHERE t.idJenisKapal = 9 ");
+                            $query = mysqli_query($link, "SELECT b.*, jk.namaJenisKapal, jm.jenisMesin, f.namaFlag 
+                            FROM barge b
+                            JOIN jenis_kapal jk ON b.idJenisKapal = jk.idJenisKapal
+                            JOIN jenis_mesin jm ON b.idJenisMesin = jm.idJenisMesin
+                            JOIN flag f ON b.idFlag = f.idFlag WHERE b.idJenisKapal = 5 ");
                             $i = 1;
                             while ($row = $query->fetch_array()) {
                             ?>
                                 <tr>
 
                                     <td class="w-0" align="left"><?= $i++ ?></td>
-                                    <td class="w-5" align="left"><?= $row['namaSertifikat']; ?></td>
                                     <td class="w-5" align="left"><?= $row['namaKapal']; ?></td>
-                                    <td class="w-5" align="center"><?= $row['tglTerbit'] ? $row['tglTerbit'] : '-'; ?></td>
-                                    <td class="w-5" align="center"><?= $row['tglExp'] ? $row['tglExp'] : '-'; ?></td>
-                                    <td class="w-5" align="center">
-                                        <?php
-                                        if ($row['permanent']) {
-                                            echo '<span class="badge bg-success">PERMANENT</span>';
-                                        } else {
-                                            // Tanggal sekarang (real time)
-                                            $tanggalSekarang = new DateTime();
-
-                                            // Tanggal kedaluwarsa dari database
-                                            $tglExp = new DateTime($row['tglExp']);
-
-                                            // Hitung selisih tanggal
-                                            $selisih = $tanggalSekarang->diff($tglExp);
-                                            $selisihHari = $selisih->days;
-
-                                            // Tampilkan selisih dalam format hari, jam, dan menit jika kurang dari 2 hari
-                                            if ($selisihHari <= 0) {
-                                                $badgeColor = 'bg-danger';
-                                                $formattedSelisih = 'Expired';
-                                            } elseif ($selisihHari == 1) {
-                                                $badgeColor = 'bg-danger';
-                                                $formattedSelisih = '1 day';
-                                            } elseif ($selisihHari <= 10) {
-                                                $badgeColor = 'bg-danger';
-                                                $formattedSelisih = $selisihHari . ' days';
-                                            } elseif ($selisihHari <= 30) {
-                                                $badgeColor = 'bg-warning';
-                                                $formattedSelisih = $selisihHari . ' days';
-                                            } else {
-                                                $badgeColor = 'bg-info'; // Warna biru untuk lebih dari 30 hari
-                                                $formattedSelisih = $selisihHari . ' days';
-                                            }
-
-                                            // Jika kurang dari 2 hari, tambahkan informasi waktu (jam dan menit)
-                                            if ($selisihHari < 2) {
-                                                $formattedSelisih .= ' ' . $selisih->format('%H:%I Menit');
-                                            }
-
-                                            // Tampilkan badge dengan warna yang sesuai
-                                            echo '<span class="badge ' . $badgeColor . '">' . $formattedSelisih . '</span>';
-                                        }
-                                        ?>
+                                    <td class="w-5" align="left"><?= $row['namaJenisKapal']; ?></td>
+                                    <td class="w-5" align="left"><?= $row['jenisMesin']; ?></td>
+                                    <td class="w-5" align="left"><?= $row['namaFlag']; ?></td>
+                                    <td class="w-5">
+                                        <a class="badge btn-success" href="?page=detail_barge&id=<?= $row[0]; ?>"><i class="fa fa-info-circle"></i>
+                                            Detail</a></li>
                                     </td>
-                                    <td class="w-10" align="center">
-                                        <?php
-                                        if (!empty($row['berkas'])) {
-                                            $pdfPath = '../file-sertifikat-tugboat/' . $row['berkas'];
-                                            echo "<a class='badge bg-success ' href='$pdfPath' download>Download</a>";
-                                        } else {
-                                            echo "File PDF tidak tersedia";
-                                        }
-                                        ?>
-                                    </td>
-
                                     <td class="w-5">
                                         <div class=" mt-3">
                                             <button type="button" class="btn btn-primary dropdown-toggle border-radius-lg px-3 py-1 " id="dropdownMenuButton" data-bs-toggle="dropdown">
                                                 <i class="fa fa-bars"></i>
                                             </button>
                                             <ul class="dropdown-menu shadow-lg mt-2  dropdown-menu-end px-2 py-2 me-sm-n4" role="menu">
-                                                <li><a class="dropdown-item border-radius-md" href="?page=edit_sertBarge&id=<?= $row[0]; ?>"><i class="fa fa-edit"></i>
+                                                <li><a class="dropdown-item border-radius-md" href="?page=edit_barge&id=<?= $row[0]; ?>"><i class="fa fa-edit"></i>
                                                         Edit Data</a></li>
                                                 <li><a class="dropdown-item border-radius-md" onclick="confirmDelete(<?= $row[0]; ?>);" href="#">
                                                         <i class="fa fa-trash-o"></i> Hapus

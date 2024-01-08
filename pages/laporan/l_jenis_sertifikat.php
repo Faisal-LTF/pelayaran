@@ -3,7 +3,7 @@
 include "../../db/koneksi.php";
 
 $no = 1;
-if (isset($_POST['cetak1'])) {
+if (isset($_POST['cetak3'])) {
     /* $kec = $_POST['jenis']; */
     $tgl1 = $_POST['tgl1'];
     $tgl2 = $_POST['tgl2'];
@@ -12,11 +12,7 @@ if (isset($_POST['cetak1'])) {
     $label = 'LAPORAN DATA PENILAIAN KINERJA PEGAWAI  <br> Tanggal : ' . tgl($tgl1) . ' s/d ' . tgl($tgl2);
     /* $label = 'LAPORAN DATA BARANG MASUK <br> JENIS : ' . $kec; */
 } else {
-    $sql = mysqli_query($link, "SELECT t.*, jk.namaJenisKapal, jm.jenisMesin, f.namaFlag 
-    FROM tugboat t
-    JOIN jenis_kapal jk ON t.idJenisKapal = jk.idJenisKapal
-    JOIN jenis_mesin jm ON t.idJenisMesin = jm.idJenisMesin
-    JOIN flag f ON t.idFlag = f.idFlag WHERE t.idJenisKapal = 9 ");
+    $sql = mysqli_query($link, "SELECT  * FROM jenis_sertifikat ");
     $label = 'LAPORAN DATA Tugboat';
 }
 
@@ -135,7 +131,7 @@ function tgl($tanggal)
                 <p class="mb-0">+1 (123) 456 7891, +44 (876) 543 2198</p> -->
             </div>
             <div>
-                <h4 class="fw-medium text-center">Laporan <br> Jenis Serifikat</h4>
+                <h4 class="fw-medium text-center">Laporan <br> Jenis Sertifikat</h4>
                 <!-- <div class="mb-2">
                     <span class="text-muted">Date Issues:</span>
                     <span class="fw-medium">April 25, 2021</span>
@@ -193,44 +189,20 @@ function tgl($tanggal)
                     <thead class="table-light text-center">
                         <tr>
                             <th>NO</th>
-                            <th>Fleet</th>
-                            <!-- <th>Nama Jenis Kapal</th> -->
-                            <th>Tahun Pembangunan</th>
-                            <!-- <th>Panjang</th>
-                            <th>Lebar</th> -->
-                            <!-- <th>NT</th>
-                            <th>GT</th> -->
-                            <th>Tanda Pendaftaram</th>
-                            <th>Tempat Pendaftaran</th>
-                            <th>Call Sign</th>
-                            <!-- <th>Jenis Mesin</th>
-                            <th>House Power</th> -->
-                            <th>Flag</th>
-                            <th>No IMO</th>
+                            <th>Jenis Sertifikat</th>
+
 
                         </tr>
                     </thead>
-                    <tbody class="text-center">
+                    <tbody class="text-right">
                         <?php
                         $no = 1;
                         while ($row = mysqli_fetch_array($sql)) {
                         ?>
                             <tr>
-                                <td><?= $no++ ?></td>
-                                <td><?= $row['namaKapal']; ?></td>
-                                <!-- <td><?= $row['namaJenisKapal']; ?></td> -->
-                                <td><?= $row['tahunPembangunan']; ?></td>
-                                <!-- <td><?= $row['panjang']; ?></td>
-                                <td><?= $row['lebar']; ?></td>
-                                <td><?= $row['nt']; ?></td>
-                                <td><?= $row['gt']; ?></td> -->
-                                <td><?= $row['tandaPendaftaran']; ?></td>
-                                <td><?= $row['tempatPendaftaran']; ?></td>
-                                <td><?= $row['callSign']; ?></td>
-                                <!-- <td><?= $row['jenisMesin']; ?></td>
-                                <td><?= $row['housePower']; ?></td> -->
-                                <td><?= $row['namaFlag']; ?></td>
-                                <td><?= $row['noImo']; ?></td>
+                                <td align="center"><?= $no++ ?></td>
+                                <td><?= $row['namaSertifikat']; ?></td>
+
                             </tr>
                         <?php } ?>
                     </tbody>

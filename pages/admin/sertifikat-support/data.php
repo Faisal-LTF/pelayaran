@@ -27,7 +27,7 @@ if (!isset($_SESSION['nama'])) {
                 buttonsStyling: false
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = `?page=hapus_sertTugboat&id=${id}`;
+                    window.location.href = `?page=hapus_sertSupport&id=${id}`;
                 }
             });
         }
@@ -37,7 +37,7 @@ if (!isset($_SESSION['nama'])) {
     <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="col-12 text-end mb-3">
-                <a href="?page=tambah_sertTugboat" class="btn btn-primary">Tambah Data</a>
+                <a href="?page=tambah_sertSupp" class="btn btn-primary">Tambah Data</a>
             </div>
             <div class="card">
                 <div class="card-datatable table-responsive pt-0">
@@ -57,11 +57,11 @@ if (!isset($_SESSION['nama'])) {
                         <tbody>
                             <?php
                             $no = 1;
-                            $query = mysqli_query($link, "SELECT st.*, js.namaSertifikat, t.namaKapal   
-                FROM sertifikat_tugboat st
-                JOIN jenis_sertifikat js ON st.idJenisSertifikat = js.idJenisSertifikat
-                JOIN tugboat t ON st.idTugboat = t.idTugboat
-                WHERE t.idJenisKapal = 9 ");
+                            $query = mysqli_query($link, "SELECT ss.*, js.namaSertifikat, s.namaKapal   
+                FROM sertifikat_support ss
+                JOIN jenis_sertifikat js ON ss.idJenisSertifikat = js.idJenisSertifikat
+                JOIN support s ON ss.idSupport = s.idSupport
+                WHERE s.idJenisKapal = 7 ");
                             $i = 1;
                             while ($row = $query->fetch_array()) {
                             ?>
@@ -118,7 +118,7 @@ if (!isset($_SESSION['nama'])) {
                                     <td class="w-10" align="center">
                                         <?php
                                         if (!empty($row['berkas'])) {
-                                            $pdfPath = '../file-sertifikat-tugboat/' . $row['berkas'];
+                                            $pdfPath = '../file-sertifikat-support/' . $row['berkas'];
                                             echo "<a class='badge bg-success ' href='$pdfPath' download>Download</a>";
                                         } else {
                                             echo "File PDF tidak tersedia";
@@ -132,7 +132,7 @@ if (!isset($_SESSION['nama'])) {
                                                 <i class="fa fa-bars"></i>
                                             </button>
                                             <ul class="dropdown-menu shadow-lg mt-2  dropdown-menu-end px-2 py-2 me-sm-n4" role="menu">
-                                                <li><a class="dropdown-item border-radius-md" href="?page=edit_sertBarge&id=<?= $row[0]; ?>"><i class="fa fa-edit"></i>
+                                                <li><a class="dropdown-item border-radius-md" href="?page=edit_sertSupp&id=<?= $row[0]; ?>"><i class="fa fa-edit"></i>
                                                         Edit Data</a></li>
                                                 <li><a class="dropdown-item border-radius-md" onclick="confirmDelete(<?= $row[0]; ?>);" href="#">
                                                         <i class="fa fa-trash-o"></i> Hapus

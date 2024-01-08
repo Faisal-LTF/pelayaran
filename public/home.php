@@ -130,6 +130,80 @@ if (!isset($_SESSION['idUser'])) {
         case "file_tugboat";
             include "../pages/admin/sertifikat-tugboat/hapus_berkas.php";
             break;
+
+            /// BARGE
+        case "data_barge";
+            include "../pages/admin/barge/data.php";
+            break;
+        case "tambah_barge";
+            include "../pages/admin/barge/add.php";
+            break;
+        case "edit_barge";
+            include "../pages/admin/barge/edit.php";
+            break;
+        case "hapus_barge";
+            include "../pages/admin/barge/delete.php";
+            break;
+        case "detail_barge";
+            include "../pages/admin/barge/detail.php";
+            break;
+        case "laporan_barge";
+            include "../pages/admin/barge/laporan.php";
+            break;
+
+            /// Sertifikat BARGE
+        case "data_sertBarge";
+            include "../pages/admin/sertifikat-barge/data.php";
+            break;
+        case "tambah_sertBarge";
+            include "../pages/admin/sertifikat-barge/add.php";
+            break;
+        case "edit_sertBarge";
+            include "../pages/admin/sertifikat-barge/edit.php";
+            break;
+        case "hapus_sertBarge";
+            include "../pages/admin/sertifikat-barge/delete.php";
+            break;
+        case "file_barge";
+            include "../pages/admin/sertifikat-barge/hapus_berkas.php";
+            break;
+
+            /// SUPPORT
+        case "data_support";
+            include "../pages/admin/support/data.php";
+            break;
+        case "tambah_support";
+            include "../pages/admin/support/add.php";
+            break;
+        case "edit_support";
+            include "../pages/admin/support/edit.php";
+            break;
+        case "hapus_support";
+            include "../pages/admin/support/delete.php";
+            break;
+        case "detail_support";
+            include "../pages/admin/support/detail.php";
+            break;
+        case "laporan_support";
+            include "../pages/admin/support/laporan.php";
+            break;
+
+            /// Sertifikat SUPPORT
+        case "data_sertSupp";
+            include "../pages/admin/sertifikat-support/data.php";
+            break;
+        case "tambah_sertSupp";
+            include "../pages/admin/sertifikat-support/add.php";
+            break;
+        case "edit_sertSupp";
+            include "../pages/admin/sertifikat-support/edit.php";
+            break;
+        case "hapus_sertSupp";
+            include "../pages/admin/sertifikat-support/delete.php";
+            break;
+        case "file_supp";
+            include "../pages/admin/sertifikat-support/hapus_berkas.php";
+            break;
     }
 ?>
 

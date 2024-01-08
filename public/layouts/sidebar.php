@@ -1597,8 +1597,8 @@
                                             <div data-i18n="Sertifikat Barge">Sertifikat Barge</div>
                                         </a>
                                     </li>
-                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_sertSupport' || $_GET['page'] == 'tambah_sertSupport' || $_GET['page'] == 'edit_sertSupport')) echo 'active'; ?>">
-                                        <a href="?page=data_sertSupport" class="menu-link">
+                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'data_sertSupp' || $_GET['page'] == 'tambah_sertSupp' || $_GET['page'] == 'edit_sertSupp')) echo 'active'; ?>">
+                                        <a href="?page=data_sertSupp" class="menu-link">
                                             <i class="menu-icon tf-icons ti ti-certificate"></i>
                                             <div data-i18n="Sertifikat Support">Sertifikat Support</div>
                                         </a>
@@ -1615,13 +1615,40 @@
                                     <li class="menu-header small text-uppercase">
                                         <span class="menu-header-text">Laporan</span>
                                     </li>
-                                    <!-- <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'laporan_tugboat')) echo 'active'; ?>">
+                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'laporan_tugboat')) echo 'active'; ?>">
                                         <a href="?page=laporan_tugboat" class="menu-link">
                                             <i class="menu-icon tf-icons ti ti-report"></i>
-                                            <div data-i18n="Laporan Tugboat">Laporan Tugboat</div>
+                                            <div data-i18n="SOON!!">SOON!!</div>
                                         </a>
+                                    </li>
+                                    <!-- <li class="menu-item">
+                                        <a class="menu-link">
+                                            <div type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                                                <i class="menu-icon tf-icons ti ti-report"></i>
+                                                <span data-i18n="Jenis Sertifikat ">Data Jenis Sertifikat </span>
+                                            </div>
+                                        </a>
+                                        <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Laporan Sertifikat </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group text-center">
+                                                            <a href="../pages/laporan/l_jenis_sertifikat.php" target="_blank" class="btn btn-info btn-md">
+                                                                <i class="fa fa-print"></i>
+                                                                Cetak Semua</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li> -->
-                                    <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'laporan_tugboat')) echo 'active'; ?>">
+                                    <!-- <li class="menu-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'laporan_tugboat')) echo 'active'; ?>">
                                         <a class="menu-link">
                                             <div type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                                                 <i class="menu-icon tf-icons ti ti-report"></i>
@@ -1638,24 +1665,6 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <!-- Isi formulir laporan tugboat di sini -->
-                                                        <!-- <form method="POST" target="_blank" action="../laporan/l_tugboat.php">
-                                                            <div class="form-group row">
-                                                                <div class="col-md-4">
-                                                                    <label>Dari Tanggal</label>
-                                                                    <input type="date" class="form-control" name="tgl1" required>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Sampai Tanggal</label>
-                                                                    <input type="date" class="form-control" name="tgl2" required>
-                                                                </div>
-                                                                <div class="col-md-4" style="margin-top: 31px;">
-                                                                    <button align="center" type="submit" name="cetak1" class="btn btn-info btn-md">
-                                                                        <i class="fa fa-print"></i>
-                                                                        Cetak</button>
-                                                                </div>
-                                                            </div>
-                                                        </form> -->
                                                         <hr>
                                                         <div class="form-group text-center">
                                                             <a href="../pages/laporan/l_tugboat.php" target="_blank" class="btn btn-info btn-md">
@@ -1666,8 +1675,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </li>
-                                    <li class="menu-item">
+                                    </li> -->
+                                    <!-- <li class="menu-item">
                                         <a class="menu-link">
                                             <div type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                                                 <i class="menu-icon tf-icons ti ti-report"></i>
@@ -1684,25 +1693,6 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <!-- Isi formulir laporan tugboat di sini -->
-                                                        <!-- <form method="POST" target="_blank" action="../laporan/l_tugboat.php">
-                                                            <div class="form-group row">
-                                                                <div class="col-md-4">
-                                                                    <label>Dari Tanggal</label>
-                                                                    <input type="date" class="form-control" name="tgl1" required>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Sampai Tanggal</label>
-                                                                    <input type="date" class="form-control" name="tgl2" required>
-                                                                </div>
-                                                                <div class="col-md-4" style="margin-top: 31px;">
-                                                                    <button align="center" type="submit" name="cetak1" class="btn btn-info btn-md">
-                                                                        <i class="fa fa-print"></i>
-                                                                        Cetak</button>
-                                                                </div>
-                                                            </div>
-                                                        </form> -->
-
                                                         <div class="form-group text-center">
                                                             <a href="../pages/laporan/l_sertifikat_tugboat.php" target="_blank" class="btn btn-info btn-md">
                                                                 <i class="fa fa-print"></i>
@@ -1712,7 +1702,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </aside>
                             <!-- / Menu -->
