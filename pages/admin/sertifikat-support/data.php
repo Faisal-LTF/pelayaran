@@ -27,7 +27,7 @@ if (!isset($_SESSION['nama'])) {
                 buttonsStyling: false
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = `?page=hapus_sertSupport&id=${id}`;
+                    window.location.href = `?page=hapus_sertSupp&id=${id}`;
                 }
             });
         }
